@@ -1,0 +1,32 @@
+﻿DESCRIPCIÓN CONTENIDO CARPETA “/sistemaVentasJK/src”
+
+
+Esta carpeta contiene cuatro paquetes
+LIBRERÍAS
+* JDK 17 (Default)
+* mysql-connector-j-8.0.31.jar
+* mysqlConnector
+
+
+PAQUETES
+‘Paquete Modelo’ - Clases
+
+
+Conexion.java - Se crea un objeto de la clase ‘Connection’ de la librería ‘mysqlConnector’ y se llama al método .getLogger() al cual se le envían como parametros la url, user, password, driver asociados al servidor local.
+
+
+CRUD.java (Interface) - En esta clase de tipo interface se instancian los métodos de listar(), eliminar(), actualizar(), agregar() para que sean implementados en todas las clases de tipo DAO.
+
+
+En este proyecto hay dos tipos de clases. La primera corresponde al nombre de la entidad creada en ‘sistemaVentasJK.sql’ en donde se inicializan las variables asociadas a cada campo de la entidad con su tipo de dato correspondiente, después se crea un constructor vacío y otro que reciba como parámetros los valores de las variables. Por última se encuentran los métodos get() y set(). Ejemplo: TablaCliente.java, TablaProducto.java
+
+
+El otro tipo de clase corresponden a las DAO -en donde se crean los métodos que interactúan con la base de datos, enviando consultas y guardando cada valor en un objeto de tipo NombreEntidadDAO.java. Ejemplo: ClienteDAO.java, ProductoDAO.java
+
+
+‘Paquete Imagenes’
+En este paquete se almacenan todas las imágenes asociadas a los jLabels que tienen los módulos en la interfaz gráfica
+
+
+‘Paquete Vistas’
+En este paquete se crean las clases de tipo JFrame y JInternalFrame. Allí se crean las interfaces gráficas de las ventanas que se muestran en el programa. Dependiendo del caso, se les asigna eventos a los JButtons o objetos que interactúan con el usuario.

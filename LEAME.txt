@@ -1,0 +1,183 @@
+DESCRIPCIÓN GENERAL DEL PROYECTO
+
+	Sistema de Ventas JK es un software utilizado como herramienta de gestión empleada para registrar las cantidades de mercancías existentes en un negocio, así como para automatizar todo lo relacionado con los 
+	procesos de ventas, mantenimiento de clientes, productos y empleados.Este sistema facilita el registrode ventas, clientes e inventario de un local de ventas independientemente de los productos que se tengan en
+	stock, conectado a un sistema gestor de bases dedatos que emplea el modelo relacional, en un lenguaje de consulta estructurado (MySQL), conectado a un servidor local por XAMPP.
+
+	Sistema de Ventas JK surgió debido al alto costo de programas similares para la gestión de datos, este sistema de información es asequible y portable, ya que se puede ejecutar en cualquier sistema operativo 
+	descargando el ejecutable del programa. El software cuenta con un sistema básico de seguridad por medio de validación de credenciales (nombre de usuario y contraseña), por lo que está orientado y hecho para que
+	lo manipulen los colaboradores pertenecientes al negocio. Para que la experiencia que va a tener el usuario sobre el programa, se cuenta con una interfaz gráfica intuitiva que favorece la curva de aprendizaje y
+	hace que la interacción que tiene el usuario sobre el software sea haga de manera más natural, gracias a las validaciones que se hacen en caso que se registren datos erróneos.
+
+PRESENTACIÓN GENERAL DE LAS FUNCIONES DE NUESTRO SOFTWARE
+
+	Nustro proyecto se elaboró mediante una serie de etapas trabajadas a lo largo de nuestro semestre las cuales fueron las siguientes:
+
+	En la elaboración del software que respalda el proyecto, se empleó el paradigma de programación orientado a objetos, desarrollado en el lenguaje de programación JAVA implementado en el IDE Netbeans el cual 
+	cuenta con la herramienta GUI para facilitar el diseño de la interfaz gráfica. Ya en la interacción usuario-máquina, Sistema de Ventas JK cuenta con módulos dispuestos en un menú situado en la parte superior
+	de la ventana principal, en donde el usuario puede elegir entre diferentes opciones, una de ellas es el módulo de ‘MANTENIMIENTO’ en donde se registran, actualizan, eliminan y agregan los productos, clientes o 
+	empleados. Otra de las funcionalidades principales se refiere al apartado de ‘VENTAS’ en la opción ‘Generar Venta’, allí el empleado tiene que llenar un formulario con los campos asociados al cliente y al
+	producto, en donde se van agregando a la tabla de facturación para posteriormente generar la venta con el subtotal por producto y el total vendido. En estos módulos se despliegan diferentes opciones en donde
+	cada una redirecciona a su ventana correspondiente, allí se disponen todos los objetos, formularios en cajas de texto, paneles y botones necesarios para que la experiencia entre el programa y el usuario sea
+	intuitiva, fácil y natural.
+
+	A continuación se describirán los métodos y la manera en cómo se abordaron cada uno de los apartados y módulos del proyecto, divididos por
+	etapas.
+
+
+2.1 Etapa 1 - Creación Base de datos
+Responsable: Julio Mario T. - Kevin Leandro R.
+Fecha: 11 de noviembre de 2022
+Duración: 5 horas
+
+	La manera en que abordamos el problema inicialmente nos llevó a investigar y documentar todo lo relacionado a la elaboración de un sistema de ventas para la gestión de inventario, clientes y productos 
+        que permitieran ser almacenados en una base de datos con un modelo relacional el cuál facilita la posterior implementación de clases en el lenguaje de programación estipulado.
+
+	Para ello nos basamos en la creación de un diagrama entidad-relación estipulado en el documento principal suministrado en la tarea de classroom, al haber realizado el mismo se implementaron las 
+        diferentes consultas necesarias para nuestro diagrama en el SGBD donde algunas variables necesitaban tener una caracteristica de "llave foránea" para así hacer uso de la misma tanto en la tabla como en 
+	la implementación del código.
+
+
+2.2 Etapa 2 - Creación Formulario Login
+Responsable: Julio Mario Torres
+Fecha: 13 de noviembre de 2022
+Duración: 6 horas
+
+	Para ello creamos el proyecto en el IDE Netbeans, el cual lo nombramos sistemaVentasJK. En la estructura del proyecto le agregamos la librería mysql.connector para conectar la base de datos 
+	anteriormente creada al proyecto hecho en java. Para la creación de esta etapa se crearon las clases tanto de tipo JFrame como de tipo DAO para la extracción de datos por las consultas enviadas a la 
+	base de datos, como de tipo entidad en donde se instancian las columnas de la tabla ‘EMPLEADO’. Para la creación del “LoginForm” importamos imágenes en formato .png y .jpg al paquete ‘Imagenes’ para 
+	asignarlos a cada jLabel que contiene la imágen. Después de ello se hizo la clase ‘Conexion.java’ en el paquete ‘Modelo’, la cual tiene como objetivo aplicar el método ‘conectarBD()’,  en donde se 
+	establece la conexión por medio de la función ‘.getConnection()’.
+
+Fecha: 14 de noviembre de 2022
+
+	Al siguiente día con la ayuda del GUI de Netbeans se realizó la interfaz de nuestro formulario Login, el cual consta de dos campos, unopara ingresar el nombre del usuario y el otro para la contraseña,
+	todo esto asociado a los empleados que ya se encuentren registrados dentro de la base de datos. 
+
+	Posterior a esto, se implementó un método en la configuración del evento cuando el usuario le da click al jButton ‘Login’, el cual se encarga de validar los campos de texto asociados al nombre de
+	usuario y contraseña registrados en la tabla ‘EMPLEADO’. 
+
+	Si la validación sale exitosa, se procede a ejecutar el método que muestra la ventana principal del programa.
+
+
+2.3 Etapa 3 - Elaboración interfaz ventana principal
+Responsable: Julio Mario Torres - Kevin Leandro R.
+Fecha: 15 de noviembre de 2022
+Duración: 6 horas
+
+	Una vez el usuario logra pasar la validación del ‘Formulario Login’, se debe mostrar en pantalla la ventana principal asociada a la clase  de tipo JFrame en el paquete ‘Vistas’ con nombre 
+	‘VentanaPrincipal.java’.
+
+	Para ello con la ayuda de la herramienta GUI de IDE Netbeans, se realizó la interfaz gráfica para la ventana principal del sistema de ventas la cual evidenciamos en nuestro informe del proyecto final,
+	en la misma se muestran diferentes apartados, que cada uno contiene sus módulos correspondientes. Al momento en que el usuario paso el puntero por encima de los apartados se despliegan los módulos 
+	asociados a cada apartado, de la siguiente manera: ejemplo con el apartado ‘MANTENIMIENTO’
+
+2.4 Etapa 4 - Elaboración apartado ‘MANTENIMIENTO’ - Módulo Cliente
+Responsable: Kevin Leandro R.
+Fecha: 16 de noviembre de 2022
+Duración: 4 horas
+
+	Cada módulo tiene asociado una JInternalFrame de la librería java.swing. Allí se crean los objetos de las clases que están en el paquete ‘Modelo’ ya sean de tipo DAO clases relacionadas a cada tabla 
+	creada en la base de datos.
+
+	Con esto en mente, para el módulo de cliente, en el paquete ‘Modelo’ se crearon las clases ‘TablaCliente.java’ y ‘ClienteDao.java’, en donde se implementan los métodos correspondientes para capturar lo
+	ingresado en las cajas de texto y hacer las validaciones correspondientes.
+
+	Con la ayuda del GUI de Netbeans, se creó la interfaz gráfica que le da vida al módulo Cliente: (Clase creada en el paquete ‘Vistas’ con nombre ‘ClienteForm.java’) la cuel evidenciamos en nuestro 
+	informe.
+
+	Esta interfaz consta de varios objetos heredados de la clase java.swing. Entre ellos cajas de texto, botones y una tabla que está asociada a los registros de la tabla ‘CLIENTE’ en la base de datos que
+	respalda el sistema de ventas.
+	
+Fecha: 17 de noviembre de 2022
+Responsable: Kevin Leandro R.
+Duración: 3 horas
+
+	Para el mantenimiento de la tabla ‘CLIENTE’ se implementó una interface en el paquete ‘Modelo’ con nombre ‘CRUD.java’ en donde se crearon los métodos de listar, agregar, actualizar y eliminar. Esta 
+	interface se implementa en las clases en donde se quiere realizar el mantenimiento crud del módulo correspondiente.
+
+Botón ‘AGREGAR’ 
+	Cuando el usuario da click sobre este botón con nombre ‘btnAgregar’ se invocan los métodos de ‘agregar()’, ‘limpiarTabla()’, ‘listar()’, ‘nuevo()’.‘agregar()’: Para ello se crea un
+	arreglo de tipo ‘object[]’ en donde a cada posición se le asigna el cuadro de texto correspondiente y se crea un objeto de tipo DAO y se llama la función ‘agregar(Object[] obj)’ que recibe como
+	parámetro el arreglo de objetos, al cuál se le aplica la consulta ‘INSERT INTO nombre_tabla’ según el ‘idCliente’.
+
+Botón ‘ACTUALIZAR’ 
+	Cuando el usuario da click sobre este botón con nombre ‘btnActualizar’ primero se valida que haya escogido con el mouse una fila de la tabla que aparece en la interfaz gráfica, en caso contrario se 
+	despliega una ventana emergente solicitando que primero escoja un registro en la tabla ‘jTabla’. Una vez hecha esta validación, se procede a llamar a los métodos ‘actualizar()’ y según el ‘idCliente’ 
+	ingresado en la caja de texto correspondiente se hace el mismo procedimiento que en el botón agregar.
+
+Botón ‘ELIMINAR’ 
+	Se realiza el mismo procedimiento que en el botón actualizar, ya que para eliminar un registro también se debe haber escogido una fila en la ‘jTabla’
+
+Botón ‘NUEVO’
+	Aquí no se realiza ninguna validación, ya que este método consiste en limpiar todos las cajas de texto para que el usuario pueda volver a llenarlas para registrar un nuevo cliente.
+
+2.5 Etapa 5, 6 - Elaboración apartado ‘MANTENIMIENTO’ - Módulo Producto y Empleado
+Responsable: Julio Mario Torres 
+Fecha: 18, 19, 20 de noviembre de 2022
+Duración: 7 horas
+
+	Para la elaboración de estos otros dos módulos, se realizó el mismo proceso que se hizo para el módulo ‘CLIENTES’, con el mismo tipo de validaciones.
+
+	Lo único que cambia es que para el módulo ‘PRODUCTO’ se puede agregar la columna referente al ‘idProduct’ el cual es la llave primaria de la entidad/tabla PRODUCTO registrada en la base de datos. 
+	Para ello se hizo una validación para que el usuario no pueda ingresar un producto con una ‘idProduct’ ya registrada.
+
+2.6 Etapa 7 - Elaboración interfaz gráfica apartado ‘VENTAS’ - Módulo ‘Generar Venta’
+Responsable: Julio Mario T.
+Fecha: 21, 22 de noviembre de 2022
+Duración: 5 horas distribuidas en los dos días
+
+	Con la ayuda del GUI de Netbeans, se creó la interfaz gráfica correspondiente a la clase JInternalFrame creada en el paquete ‘Vistas’ con nombre ‘VentasForm.java’ la cual podemos visualizar en nuestro
+	informe
+2.7 Etapa 8 - Elaboración métodos apartado ‘VENTAS’ - Módulo ‘Generar Venta’
+Responsable: Julio Mario T.
+Fecha: 23 - 26 de noviembre de 2022
+Duración: 12 horas repartidas en el intervalo de días trabajado.
+
+	1.Ya hecha la interfaz gráfica, procedimos a cambiarle el nombre a todos los objetos generados en la construcción de la interfaz. Hay ciertos aspectos a recalcar:
+	Este módulo está pensado para que el usuario (que siempre va a ser un empleado) pueda consultar al cliente según su ‘cedCliente’, en donde se hace la validación con el método ‘buscarCliente()’.
+	Si la cédula ingresada no corresponde a ningún cliente registrado dentro de la tabla ‘CLIENTE’, se abre una ventana emergente en donde se le pregunta al usuario si desea registrar un nuevo cliente.
+	Si da click en ‘YES’, se le redirecciona al módulo ‘CLIENTE’ para que registre ese nuevo cliente según los datos correspondientes.
+
+	2.Una vez completado el proceso de ‘buscarCliente()’ el usuario debe llenar el cuadro de texto asociado al ‘codProduct’, se hace la validación si ese código de producto se encuentra registrado. Si el 
+	código SI corresponde a un registro de la tabla ‘PRODUCTO’ se muestran los atributos asociados a ese producto en los cuadros de texto: ‘jTxtProduct’ - ‘jTxtStock’ - ‘jTxtPrecio’.
+
+	3.Posteriormente se le pide al usuario que escoja la cantidad de ítems que se van a facturar o que el cliente desea comprar en ‘jSpinCantidad’
+
+	4.Una vez seleccionado el producto y la cantidad de ítems que el cliente desea comprar, se puede proceder a dar click en el jButton ‘AGREGAR’
+
+Botón AGREGAR módulo Ventas
+
+	Al activar el evento en este botón, se ejecuta el método ‘agregarProduct()’ de la clase ‘VentasForm.java’.
+	En el método ‘agregarProduct()’ se agregan los atributos de cada producto en la tabla ‘jTablaDetalle’, esto se hace capturando los datos asociados a las cajas de texto correspondientes a la información
+	del producto y guardando esos valores en un arreglo de tipo Arraylist<>. También se valida si el stock del producto solicitado es mayor a cero y por último se va agregando cada producto a la tabla 
+	‘jTablaDetalle’
+	NOTA: al agregar los productos a la tabla se calcula el subtotal que corresponde a la multiplicación de la cantidad de productos que se van a facturar por el precio de cada producto: subtotal = 
+	cantProduct * precioProduct.
+
+	5.El total del precio de venta se calcula y se muestra en el cuadro de texto ‘jTxtTotalPagar’, esto se recorriendo toda la ‘jTablaDetalle’ con el método ‘calcularTotal()’. Se hace uso del método 
+	‘.setText()’ para mostrar el precio total de la venta cada vez que se agregue un producto a la ‘jTablaDetalle’.
+
+	6.Cuando ya se hayan registrado todos los productos que el cliente desea comprar, se da click en ‘GENERAR VENTA’
+
+Botón GENERAR VENTA módulo Ventas 
+	Primero se valida si hay productos agregados a la tabla, sino se muestra una ventana emergente, Si, si hay productos agregados a la tabla se ejecutan los siguientes métodos: ‘guardarVenta()’, 
+	‘guardarFactura()’, ‘actualizarStock()’, ‘limpiarFormulario()’ ‘generarNumSer()’,‘guardarVenta()’: Aquí se inicializan las variables con los campos que tiene la tabla ‘VENTA’ en la base de datos. Se
+	crea un objeto de tipo ‘TablaVenta’ y con los métodos ‘setNombAtributo()’ se le asignan los valores correspondientes al tipo de dato. Para luego crear un objeto de tipo ‘DAO’ perteneciente a la clase 
+	‘VentaDAO’ y se llama el método de esa clase llamado ‘guardarVenta(TablaVenta venta)’ que recibe como parámetro un objeto de la clase ‘TablaVenta’ y se manda la consulta a la base de datos para 
+	registrar la venta. En el método ‘guardarFactura()’ se aplica la misma lógica utilizada para crear el método ‘guardarVenta()’.
+	En la tabla ‘FACTURA’ se almacenan todos los productos agregados a la tabla y al momento de dar click en el botón ‘GENERAR VENTA’ se registran los datos en la tabla.
+
+	‘actualizarStock()’: En este método se utiliza un ciclo for() para recorrer todas las filas de la tabla ‘jTablaDetalle’ en donde se captura la columna asociada a la cantidad de items que se van a 
+	facturar por producto.
+	Se crea un objeto de la clase ‘TablaProducto’ al cual se le asignan los valores de ‘idProduct’ y ‘cantProduct’ para luego llamar al método de la clase ‘ProductoDAO’ 
+	(productDao.actualizarStock(stockActualizado, idProduct)) que recibe como parámetros el stock actualizado correspondiente a la cantidad de items almacenados del producto menos la cantidad de el producto
+	que se va a facturar.
+
+	‘limpiarFormulario()’: Se limpian todas las cajas de texto del formulario ‘VentasForm.java’ y también se limpia la tabla ‘jTablaDetalle’‘generarNumSer()’: Cada vez que se genera una venta se actualiza 
+	la caja de texto asociada al número de serie de la venta.
+
+	7. La caja de texto ‘jTxtVende’ asociada al nombre de usuario del empleado que tiene activa la sesión es capturado de la ‘TablaEmpleado’. Llamando al método ‘generarNombEmple()’
+	8. La caja de texto ‘jTxtFecha’ asociada a la fecha actual es generada por la clase ‘Calendar’ a través del método ‘generarFecha()’
+
+Los resultados de cada etapa indicada fueron satisfactorios como se comprobará con el video del funcionamiento de nuestro software.
